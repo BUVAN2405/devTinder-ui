@@ -22,7 +22,7 @@ import axios from "axios";
 
 
 //      } catch (err) {
-//        //TODO: handle error
+//        console.error(err);
 //      }
 //    };
 
