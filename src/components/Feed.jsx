@@ -16,9 +16,9 @@ import axios from "axios";
 //        const res = await axios.get(BASE_URL + "/feed", {
 //         withCredentials: true,
 //        });
-//        dispatch(addFeed(res.data));
+//        dispatch(addFeed(res?.data?.data));
 //        console.log(feed);
-//        console.log(res.data);
+//        console.log(res?.data,data);
 
 
 //      } catch (err) {
@@ -39,7 +39,7 @@ import axios from "axios";
 // );
 // };
 
-//xport default Feed;
+// export default Feed;
 
 
 const Feed = () => {
@@ -51,7 +51,7 @@ const Feed = () => {
         console.log("API Response:", res.data);  // Log full response to check
 
         // Since the response is directly an array of users, assign it to the state
-        const responseData = res.data || [];  // In case of empty response
+        const responseData = res.data.data || [];  // In case of empty response
         dispatch(addFeed(responseData));
 
     } catch (err) {
