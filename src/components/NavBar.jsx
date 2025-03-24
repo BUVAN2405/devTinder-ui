@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {removeUser} from "../utils/userSlice";
-import {useNavigate} from "react-router-dom";
+import { removeUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 const NavBar = () => {
@@ -9,19 +9,18 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-    const handleLogout =async() =>{
-             try{
-              await axios.post(  BASE_URL + "/logout" , {
-                withCrendentials: true,
-              });
-              dispatch(removeUser());
-              navigate("/login");
+  const handleLogout = async () => {
+    try {
+      await axios.post(BASE_URL + "/logout", {
+        withCrendentials: true,
+      });
+      dispatch(removeUser());
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-             }catch(err){
-                console.error(err);
-             }
-    };
-    
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
@@ -47,22 +46,23 @@ const NavBar = () => {
               <li>
                 <Link to="/profile" className="justify-between">
                   Profile
-                   <span className="badge">New</span>
-
+                  <span className="badge">New</span>
                 </Link>
               </li>
               <li>
-                 <Link to="/connections" >
-                  Connections
-                </Link>
-              </li>
-               <li>
-                 <Link to="/requests" >
-                  Requests
-                </Link>
+                <Link to="/connections">Connections</Link>
               </li>
               <li>
-                <a onClick= {handleLogout}>Logout</a>
+                <Link to="/requests">Requests</Link>
+              </li>
+              <li>
+                <Link to="/Premium">Premium</Link>
+              </li>
+              <li>
+                <Link to="/account/delete">Account deletion</Link>
+              </li>
+              <li>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
